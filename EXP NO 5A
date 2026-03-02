@@ -1,0 +1,23 @@
+from scipy.stats import norm
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sb
+
+# Generate data
+data = np.arange(1, 10, 0.01)
+
+# Probability Density Function
+pdf = norm.pdf(data, loc=5.3, scale=1)
+
+# Set seaborn style
+sb.set_style('whitegrid')
+
+# Plot
+sb.lineplot(x=data, y=pdf, color='black')
+
+# Labels
+plt.xlabel('Heights')
+plt.ylabel('Probability Density')
+
+# Show plot
+plt.show()
