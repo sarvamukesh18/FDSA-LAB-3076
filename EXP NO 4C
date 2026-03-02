@@ -1,0 +1,29 @@
+import nltk
+from nltk.corpus import names
+
+# Download names corpus if not already downloaded
+nltk.download('names')
+
+# Prepare (gender, last_letter) pairs
+nt = [
+    (fid.split('.')[0], name[-1])
+    for fid in names.fileids()
+    for name in names.words(fid)
+]
+
+# Conditional Frequency Distribution
+cfd2 = nltk.ConditionalFreqDist(nt)
+
+# Frequency of last letter 'a'
+print("Female names ending with 'a':", cfd2['female']['a'])
+print("Male names ending with 'a':", cfd2['male']['a'])
+
+# Compare distributions
+print("Is female distribution > male distribution?")
+print(cfd2['female'] > cfd2['male'])
+
+# Tabulate frequencies for selected letters
+cfd2.tabulate(samples=['a', 'e'])
+
+# Plot the CFD
+cfd2.plot()
