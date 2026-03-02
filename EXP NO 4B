@@ -1,0 +1,46 @@
+import nltk
+from nltk.corpus import brown
+
+# Download Brown corpus if not already downloaded
+nltk.download('brown')
+
+# Create Conditional Frequency Distribution
+cfd = nltk.ConditionalFreqDist(
+    (genre, word)
+    for genre in brown.categories()
+    for word in brown.words(categories=genre)
+)
+
+# View CFD object
+print(cfd)
+
+# List all conditions (genres)
+print(cfd.conditions())
+
+# Tabulate selected words across selected genres
+cfd.tabulate(
+    conditions=['government', 'humor', 'reviews'],
+    samples=['leadership', 'worship', 'hardship']
+)
+
+# Plot the same data
+cfd.plot(
+    conditions=['government', 'humor', 'reviews'],
+    samples=['leadership', 'worship', 'hardship']
+)
+
+# Cumulative frequency table
+cfd.tabulate(
+    conditions=['government', 'humor', 'reviews'],
+    samples=['leadership', 'worship', 'hardship'],
+    cumulative=True
+)
+
+# Frequency distribution for 'news' category
+news_fd = cfd['news']
+
+# Most common words in news
+print(news_fd.most_common(3))
+
+# Frequency of the word 'the' in news
+print(news_fd['the'])
