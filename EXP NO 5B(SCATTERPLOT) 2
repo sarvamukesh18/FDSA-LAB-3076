@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Data
+x = np.arange(50)
+y = x + np.random.randint(0, 30, 50)
+
+# Figure size and resolution
+plt.rcParams.update({'figure.figsize': (10, 8), 'figure.dpi': 100})
+
+# Scatter plot with color mapping
+plt.scatter(x, y, c=y, cmap='Spectral')
+
+# Color bar
+plt.colorbar()
+
+# Titles and labels
+plt.title('Simple Scatter Plot')
+plt.xlabel('X - value')
+plt.ylabel('Y - value')
+
+# Show plot
+plt.show()
