@@ -1,0 +1,13 @@
+
+print("F-value:", fvalue)
+print("P-value:", pvalue)
+import scipy.stats as stats
+
+# Test case data (4 groups)
+A = [12, 15, 14, 10, 13]
+B = [22, 25, 24, 23, 21]
+C = [32, 35, 30, 31, 33]
+D = [18, 17, 19, 20, 16]
+
+# Perform One-Way ANOVA
+fvalue, pvalue = stats.f_oneway(A, B, C, D)
